@@ -1,0 +1,217 @@
+%-----------------------------------------------------
+% Dr. Oscar Jimenez Flores
+% Configuración de APA y formato de índice alineado
+%-----------------------------------------------------
+
+% Configuración del tamaño de página
+\usepackage[a4paper,
+            left=3.5cm,
+            right=2.5cm,
+            top=2.5cm,
+            bottom=2.5cm]{geometry}
+
+% Idioma y codificación
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[autostyle=true, babel=true]{csquotes}
+
+% Tipografía y espaciado APA
+%\usepackage{times}
+\usepackage{newtxtext}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0.8cm} % sangría de la primera línea de párrafo
+\usepackage{indentfirst}
+
+% Matemáticas
+\usepackage{amsmath}
+
+% Figuras y tablas
+\usepackage{graphicx}
+%\graphicspath{Figuras/}
+\usepackage{caption}
+\usepackage{array}
+
+% Bibliografía estilo APA
+\usepackage[backend=biber, style=apa, sorting=nyt]{biblatex}
+\addbibresource{Bibliografia/referencias.bib}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+
+% Hipervínculos
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+    citecolor=black,
+}
+\urlstyle{same}
+
+% Numeración de páginas
+\pagestyle{plain}
+
+% Eliminar páginas en blanco entre capítulos
+\let\cleardoublepage\clearpage
+
+% Numeración romana para capítulos
+%\renewcommand{\thechapter}{\Roman{chapter}}
+
+% Paquetes para formato de títulos e índice
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% ---------------------- FORMATO DE TÍTULOS ----------------------
+
+% Formato para capítulos
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering\normalsize}
+  {CAPÍTULO \ \Roman{chapter}} % Primera línea
+  {0pt}
+  {\vspace{1ex}\centering} % Segunda línea será el título real
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+% Formato para secciones y subsecciones
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries}
+  {\thesection}
+  {0.3em} % espacio entre numeración y título
+  {}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}
+  {0.3em}
+  {}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsubsection}
+  {0.3em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+%\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}.}
+\renewcommand\thesubsection{\thesection\arabic{subsection}.}
+\renewcommand\thesubsubsection{\thesubsection\arabic{subsubsection}.}
+
+%\setcounter{secnumdepth}{3}
+%\setcounter{tocdepth}{3}
+
+
+% ---------------------- CONFIGURACIÓN DEL ÍNDICE ----------------------
+
+% Capítulos en índice: "I. Datos generales"
+\titlecontents{chapter}
+  [0pt] % Alineado al margen izquierdo del documento
+  {\addvspace{4pt}\normalfont\normalsize}
+  {\thecontentslabel. \enspace} % I. Nombre capítulo
+  {} % No hay texto antes del título
+  {\titlerule*[0.5pc]{.}\contentspage}
+
+% Secciones alineadas al mismo margen
+\titlecontents{section}
+  [0pt]
+  {\addvspace{2pt}\normalfont\normalsize}
+  {\thecontentslabel \enspace}
+  {}
+  {\titlerule*[0.5pc]{.}\contentspage}
+
+% Subsecciones también alineadas
+\titlecontents{subsection}
+  [0pt]
+  {\addvspace{2pt}\normalfont\normalsize}
+  {\thecontentslabel \enspace}
+  {}
+  {\titlerule*[0.5pc]{.}\contentspage}
+
+% Incluir palabra "bibliografía" en el índice automáticamente
+%\usepackage[nottoc]{tocbibind}
+
+% ------------------- Comando para Título de ANEXOS -------------------
+\newcommand{\anexosTitulo}[1]{%
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{#1}
+    \thispagestyle{empty}
+    %\vspace*{\fill}
+    \vspace*{8.5cm} % ↑ Ajusta este valor según qué tan arriba lo quieras
+    \begin{center}
+        {\fontsize{12}{15}\selectfont\bfseries #1}
+    \end{center}
+    \vspace*{\fill}
+}
+
+% ---------------------- CONFIGURACIÓN DEL PÁGINAS ANEXOS ----------------------
+\usepackage{pdflscape}
+
+% Macro para anexos verticales
+\newcommand{\anexoV}[2]{ % #1 = título del anexo, #2 = archivo
+    \newpage
+    \cleardoublepage
+    \phantomsection
+    %\addcontentsline{toc}{chapter}{#1}  % Agregar el título del anexo al índice
+    \input{#2}  % Cargar el archivo en formato vertical
+    \thispagestyle{empty}  % Eliminar numeración en esta página
+
+}
+
+% Macro para anexos horizontales
+\newcommand{\anexoH}[2]{ % #1 = título del anexo, #2 = archivo
+    \newpage
+    \phantomsection
+    %\addcontentsline{toc}{chapter}{#1}  % Agregar título al índice
+    
+    \newgeometry{top=1cm, left=1cm, right=1cm, bottom=1cm}  % Ajuste de márgenes
+    
+    \begin{landscape}  % Inicia el entorno horizontal
+        \thispagestyle{empty}  % Eliminar numeración de página
+        \input{#2}  % Cargar el archivo
+        \thispagestyle{empty}  % Eliminar numeración de página
+    \end{landscape}
+    %\thispagestyle{empty}  % Eliminar numeración de página
+    \restoregeometry  % Restaurar los márgenes originales
+}
+
+% ---------------------- CONFIGURACIÓN TABLAS ----------------------
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\counterwithout{table}{chapter}
+\counterwithout{table}{section}% Desactiva numeración tipo 2.1 → deja solo 1, 2, 3
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\DeclareCaptionFormat{apaespanol}{%
+  \normalfont\bfseries#1 #2\\
+  \normalfont\itshape#3
+}
+\captionsetup[table]{format=apaespanol, labelsep=none, textfont=it, justification=raggedright, singlelinecheck=off}
+\captionsetup[table]{justification=raggedright, singlelinecheck=off, labelsep=none} % Alinea el título a la izquierda
+
+% ---------------------- CONFIGURACIÓN FIGURAS ----------------------
+% Configuración para que las figuras sigan el formato APA
+\captionsetup[figure]{
+  format=apaespanol, 
+  labelsep=none, 
+  textfont=it, 
+  justification=raggedright, 
+  singlelinecheck=off, 
+  font=small
+}
+\addto\captionsspanish{\renewcommand{\figurename}{Figura}} % Cambia "Figure" por "Figura"
+
+% Ajuste de numeración para figuras
+\counterwithout{figure}{chapter}  % Elimina la numeración por capítulo, para numeración continua
+\counterwithout{figure}{section}  % Elimina la numeración por sección, para numeración continua
+
+% Ajuste de estilo para la numeración de las figuras
+\DeclareCaptionFormat{apaespanol}{%
+  \normalfont\bfseries#1 #2\\
+  \normalfont\itshape#3
+}

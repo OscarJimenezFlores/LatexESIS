@@ -1,0 +1,73 @@
+# Archivos temporales de LaTeX
+*.aux
+*.bbl
+*.blg
+*.brf
+*.dvi
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.idx
+
+# Archivos de compilación específicos
+*.synctex
+*.main.bcf
+*.main.run.xml
+*.run.xml
+*.run.xml.gz
+
+# Archivos de salida de compilación
+*.pdf
+*.ps
+*.dvi
+*.eps
+*.pdfsync
+
+# Archivos de salida de compilación de bibtex
+*.bbl
+*.blg
+
+# Archivos de salida de compilación de makeindex
+*.ilg
+*.ind
+*.idx
+
+# Archivos de salida de compilación de latexmk
+*.fdb_latexmk
+
+# Archivos de salida de compilación de biblatex
+*.bcf
+
+# Archivos de backup
+*~
+*.bak
+*.swp
+*.swo
+
+# Archivos de configuración de editor
+.vscode/
+.idea/
+*.iml
+
+# Archivos específicos de LaTeX que no se necesitan en Git
+*.fdb_latexmk
+
+# Archivos temporales de macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos temporales de Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archivos temporales de emacs
+*~
+\#*\#
+.\#*

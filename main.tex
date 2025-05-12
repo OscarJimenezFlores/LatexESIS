@@ -1,0 +1,65 @@
+%-----------------------------------------------------
+% Dr. Oscar Jimenez Flores
+% Proyecto de Tesis UNJBG - ESIS
+%-----------------------------------------------------
+
+\documentclass[12pt, oneside, openany]{report}
+\input{Estilos/APA}
+
+\begin{document}
+
+% ------------------- Preliminares -------------------
+\thispagestyle{empty}
+\input{Preliminares/portada}
+\cleardoublepage
+\pagenumbering{roman} % Numeración romana
+
+% ------------------- Índices -------------------
+\renewcommand{\contentsname}{ÍNDICE GENERAL}
+\tableofcontents
+\cleardoublepage
+
+% ------------------- Capítulos -------------------
+\pagenumbering{arabic} % Numeración arábiga
+
+\chapter{DATOS GENERALES}
+\input{Capitulos/capitulo_1}
+
+\chapter{PLANTEAMIENTO DEL PROBLEMA}
+\input{Capitulos/capitulo_2}
+
+\chapter{MARCO TEÓRICO}
+\input{Capitulos/capitulo_3}
+
+\chapter{MARCO METODOLÓGICO}
+\input{Capitulos/capitulo_4}
+
+\chapter{ASPECTOS ADMINISTRATIVOS}
+\input{Capitulos/capitulo_5}
+
+% ------------------- Bibliografía -------------------
+\phantomsection
+%\nocite{*}
+\printbibliography % Donde se imprimirá la bibliografía
+\addcontentsline{toc}{chapter}{REFERENCIAS BIBLIOGRÁFICAS}
+
+% ------------------- Anexos -------------------
+\begin{appendix}
+\anexosTitulo{ANEXOS}
+
+% Anexo 1 (Horizontal)
+\anexoH{Anexo1}{Anexos/anexo_1}
+
+% Anexo 2 (Vertical)
+\anexoV{Anexo2}{Anexos/anexo_2}
+
+% Anexo 3 (Vertical)
+\anexoV{Anexo3}{Anexos/anexo_3}
+
+% Anexo 4 (Vertical)
+\anexoV{Anexo4}{Anexos/anexo_4}
+
+\end{appendix}
+% ------------------- Fin Anexos -------------------
+
+\end{document}
