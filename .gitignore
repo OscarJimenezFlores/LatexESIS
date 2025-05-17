@@ -71,3 +71,6 @@ Desktop.ini
 *~
 \#*\#
 .\#*
+
+# Carpetas de salida de compilación
+build/

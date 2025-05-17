@@ -27,6 +27,22 @@ El proyecto está organizado de la siguiente manera:
 Para compilar el proyecto, asegúrate de tener instalado:
 
 - **LaTeX** (TeX Live, MiKTeX, o cualquier distribución compatible).
-- Un editor de texto compatible con LaTeX, como **Overleaf**, **TeXShop** (macOS), **TeXworks** (Windows), o **VS Code** con la extensión LaTeX Workshop.
+- Un editor de texto compatible con LaTeX, como **Overleaf**, **TeXShop** (macOS), **TeXworks** (Windows)
+- En **VS Code** instala la extensión:
+    - LaTeX Workshop.
+    - LaTeX Previewer
+    - LaTeX Utilities
+    - Markdown PDF
 
+## Limpiar archivos auxiliares Latex
+
+1. Darle permisos a clean.sh
+```
+chmod +x clean.sh
+````
+
+2. ejecutar clean.sh
+```
+./clean.sh
+````
 
